@@ -1,0 +1,27 @@
+management:
+  health:
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+
+spring:
+  gateway:
+    discovery:
+      locator:
+        enabled: true
+        lower-case-service-id: true
+    routes:
+      - id: e-school-service-user-session
+        uri: lb://session
+        predicates:
+          - Path= /session/**
+        filters:
+          - StripPrefix=1
