@@ -20,7 +20,7 @@ spring:
         lower-case-service-id: true
     routes:
       - id: e-school-service-user-session
-        uri: lb://session
+        uri: lb://e-school-service-user-session
         predicates:
           - Path= /session/**
         filters:
